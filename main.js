@@ -8,8 +8,10 @@ var showMeal = document.querySelector('.show-meal');
 var cookpot = document.querySelector('img');
 var suggestion = document.querySelector('#suggestion');
 var chosenMeal = document.querySelector('#chosen-meal');
+var clearButton = document.querySelector('#clear')
 
 pickMeal.addEventListener('click', suggestRecipe);
+// clearButton.addEventListener('click', clearDisplayPanel)
 
 function hide(element) {
   element.classList.add('hidden')
@@ -23,38 +25,26 @@ function randomizeItem(array) {
   return array[getRandomIndex(array)];
 }
 
-function combineEntireMeal() {
-  var entireMeal;
-  showMeal.innerHTML = `
-    <p id="suggestion">You should make:</p>
-    <p class="chosen-meal">${randomizeItem(mains)} with a side of ${randomizeItem(sides)}
-    and ${randomizeItem(desserts)} for dessert!</p>
-  `;
-  entireMeal = showMeal.innerHTML;
-  return entireMeal;
-}
-
 function suggestRecipe(event) {
   event.preventDefault();
-  hide(cookpot);
-  unhide(suggestion);
-  unhide(chosenMeal);
+  hide(cookpot)
+  unhide(chosenMeal)
   var mealKey = { sides: sides, mains: mains, desserts: desserts }
-  var result = ''
   for (i = 0; i < meal.length-1; i++) {
     if (meal[i].checked) {
-      result = randomizeItem(mealKey[meal[i].value])
-      chosenMeal.innerText = result
+      unhide(suggestion)
+      chosenMeal.innerText = randomizeItem(mealKey[meal[i].value])
       return
     } else if (meal[3].checked) {
-      result = combineEntireMeal()
+      unhide(suggestion)
+      chosenMeal.innerText = `${randomizeItem(mains)} with a side of ${randomizeItem(sides)}
+      and ${randomizeItem(desserts)} for dessert!`
     } else {
-      hide(suggestion);
-      result = 'Please make a selection'
+      hide(suggestion)
+      chosenMeal.innerText = 'Please make a selection'
     }
   }
 }
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
