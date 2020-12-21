@@ -17,6 +17,8 @@ html,
   body {
     margin: 0;
     padding: 0;
+    position: relative;
+    overflow: scroll;
   }
 
 body {
@@ -38,8 +40,8 @@ header {
 }
 
 main {
-  position: relative;
   height: 100%;
+  overflow: scroll;
 }
 
 section {
@@ -47,40 +49,45 @@ section {
   height: 32rem;
   width: 36rem;
   max-width: 30%;
-  min-width: 15%;
-  max-height: 50%;
-  min-height: 50%;
+  min-width: 30%;
+  max-height: 25em;
+  min-height: 25em;
   background: rgba(225, 225, 225, .9);
   transition-duration: .6s;
-  margin: 50px;
   margin: 0 auto;
-  top: 5%;
+  top: 15%;
+}
+
+section:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
 }
 
 h1 {
-  position: relative;
   padding-top: .5em;
   padding-left: 1em;
   font-size: 1.6em;
 }
 
 h2 {
-  position: relative;
+  position: absolute;
   left: 7%;
-  top: 12%;
+  top: 10%;
 }
 
 h2:after{
-  position: relative;
   bottom: 7px;
   color: red;
   content: "*";
+  padding-right: 2em;
 }
 
 form {
-  display: inline-block;
-  position: relative;
-  top: 15%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 27%;
   left: 7%;
   font-size: 1.3em;
 }
@@ -101,9 +108,10 @@ button {
 }
 
 #cookpot {
-  position: relative;
-  bottom: 30%;
-  transform: scale(.25);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transform: scale(.40);
 }
 
 #suggestion {
@@ -112,26 +120,25 @@ button {
   top: 35%;
 }
 
-.chosen-meal {
-  font-size: 2.3em;
-  top: 35%;
-}
-
 .show-meal p {
   margin: 0;
+  padding-right: 2%;
+  padding-left:2%;
   position: relative;
   text-align: center;
+  font-size: 2.3em;
+  top: 35%;
 }
 
 .hidden {
   display: none;
 }
 
-.add-recipe {
+/* .add-recipe {
   background: rgba(225, 225, 225, .9);
   top: 1.5%;
   left: 92%;
-}
+} */
 
 .lets-cook {
   background: #0fb9b1;
@@ -144,4 +151,11 @@ button {
 
 .show-meal {
   right: 15%;
+}
+
+@media screen and (max-width: 480px) {
+  form {
+    font-size: .85em;
+  }
+
 }
