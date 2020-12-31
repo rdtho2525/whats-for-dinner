@@ -7,7 +7,7 @@ var chosenMeal = document.querySelector('#chosen-meal');
 var clearButton = document.querySelector('#clear')
 
 pickMeal.addEventListener('click', suggestRecipe);
-// clearButton.addEventListener('click', clearDisplayPanel)
+clearButton.addEventListener('click', clearDisplayPanel)
 
 function hide(element) {
   element.classList.add('hidden')
@@ -28,18 +28,28 @@ function suggestRecipe(event) {
   var mealKey = { sides: sides, mains: mains, desserts: desserts }
   for (i = 0; i < meal.length-1; i++) {
     if (meal[i].checked) {
+      unhide(clearButton)
       unhide(suggestion)
+      showMeal.classList.remove('entire-meal');
       chosenMeal.innerText = randomizeItem(mealKey[meal[i].value])
       return
     } else if (meal[3].checked) {
+      unhide(clearButton)
       unhide(suggestion)
+      showMeal.classList.add('entire-meal');
       chosenMeal.innerText = `${randomizeItem(mains)} with a side of ${randomizeItem(sides)}
       and ${randomizeItem(desserts)} for dessert!`
     } else {
       hide(suggestion)
+      unhide(clearButton)
       chosenMeal.innerText = 'Please make a selection'
     }
   }
+}
+
+function clearDisplayPanel() {
+  location.reload();
+  return
 }
 
 function getRandomIndex(array) {

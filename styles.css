@@ -34,6 +34,7 @@ body {
 }
 
 header {
+  display: flex;
   background-color: #0fb9b1;
   font-family: 'Roboto', sans-serif;
   height: 4em;
@@ -65,7 +66,6 @@ section:after {
 }
 
 h1 {
-  padding-top: .5em;
   padding-left: 1em;
   font-size: 1.6em;
 }
@@ -115,19 +115,10 @@ button {
 }
 
 #suggestion {
+  position: relative;
   font-size: 1.3em;
   font-style: italic;
-  top: 35%;
-}
-
-.show-meal p {
-  margin: 0;
-  padding-right: 2%;
-  padding-left:2%;
-  position: relative;
-  text-align: center;
-  font-size: 2.3em;
-  top: 35%;
+  padding-bottom: .5em;
 }
 
 .hidden {
@@ -150,12 +141,47 @@ button {
 }
 
 .show-meal {
+  display: inline-flex;
+  flex-direction: column;
   right: 15%;
 }
 
+.show-meal > p {
+  margin: 0;
+  /* max-width: 95%; */
+  padding-right: 1em;
+  padding-left: 1em;
+  position: relative;
+  align-items: center;
+  text-align: center;
+  font-size: 2em;
+  top: 35%;
+}
+
+.entire-meal > p {
+  bottom: 25%;
+  position: absolute;
+  font-size: 1.75em;
+}
+
+.entire-meal > #suggestion {
+  top: 27%;
+}
+
+#clear {
+  background-color: #95a5a6;
+  color: white;
+  position: absolute;
+  width: 5em;
+  height: 2em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  top: 87%;
+  left: 75%;
+}
+
 @media screen and (max-width: 480px) {
-  form {
+  .show-meal > p {
     font-size: .85em;
   }
-
 }
